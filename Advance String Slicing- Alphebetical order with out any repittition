@@ -1,0 +1,27 @@
+letters ='abcdefghijklmnopqrstuvwxyz'
+count = []
+s="avbgdfraddabcdefkllkabcdefghim"
+k=0
+l=3
+max,length = 0,0
+maxcount=[]
+for n in range(len(s)):
+    if max<length:
+        max = length
+        maxcount=count
+    if s[n:n+2] in letters:
+        count = s[n:n+2]
+        #print(count)
+        k=n
+        for l in range(len(s)-n):
+            if s[k:k+l] in letters:
+                count = s[k:k + l]
+                #print(count)
+                l = l + 1
+                length = len(count)
+                if k+l==len(s):
+                    break
+            else:
+                break
+
+print('Longest substring in alphabetical order is:', maxcount)
