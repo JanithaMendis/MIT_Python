@@ -1,0 +1,41 @@
+letters ='abcdefghijklmnopqrstuvwxyz'
+count = []
+s="zyxedzbabcddddefffghiiiikkkk"
+k=0
+l=3
+max,length = 0,0
+maxcount=[]
+
+def isInAlphabeticalOrder(word):
+    word1=sorted(word)
+    word2=[]
+    for i in word:
+        word2.append(i)
+    if word2 == word1:
+        return True
+    else:
+        return False
+
+for n in range(len(s)):
+    if max<length:
+        max = length
+        maxcount=count
+    if isInAlphabeticalOrder(s[n:n+2]):
+        count = s[n:n+2]
+        #print(count)
+        k=n
+        for l in range(3,len(s)-(n-1)):
+            length = len(count)
+            if isInAlphabeticalOrder(s[k:k+l]):
+                count = s[k:k + l]
+                #print(count)
+                l = l + 1
+                length = len(count)
+                if k+l==(len(s)+1):
+                    break
+            else:
+                break
+if maxcount==[]:
+    print('Longest substring in alphabetical order is:', s[0])
+else:
+    print('Longest substring in alphabetical order is:', maxcount)
